@@ -36,24 +36,33 @@ however, feel free to generate you own seeds with the seed generator.
 Nontheless, note that the generated seeds will OVERWRITE the two files.
 
 -- necessary parameters --
+
 dataset: the dataset name
 
 -- optional parameters --
-numSeeds: the number of seeds to generate, default 10
-	Note that when numSeeds is set to more than the number of positive examples np, it is automatically reset to np.
+
+numSeeds: the number of seeds to generate, default 10. Note that when numSeeds is set to more than the number of positive examples np, it is automatically reset to np.
+
 path: the output path, default dataset (the dataset path)
 
 ===== Training PU-Shapelets with PUSh.cpp =====
 
 -- necessary parameters --
+
 datasetName: dataset name
+
 numTrain: number of training examples
+
 numP: number of positive training examples
+
 numPLabeled: number of initial positive labeled examples
+
 tsLen: time series length
+
 seed_id: ID of the set of initial positive labeled examples
 
 -- optional parameters --
+
 maxNumSh: maximum number of (assumed) shapelets, default 200
 minNumIters: minimum number of pattern ensemble iterations, default 5 if numP >= 10, 1 otherwise
 maxNumIters: maximum number of pattern ensemble iterations, default numTrain * 2 / 3 - numPLabeled
@@ -65,56 +74,93 @@ path: input and output path, default "..\\sample_data\\" + datasetName
 ===== Classification with classify_PUSh.cpp =====
 
 -- necessary parameters --
+
 datasetName: dataset name
+
 numTrain: number of training examples
+
 numP: number of positive training examples
+
 numPLabeled: number of initial positive labeled examples
+
 tsLen: time series length
+
 numTest: number of test examples
+
 seed_id: ID of the set of initial positive labeled examples
 
 -- optional parameters --
+
 numSh: the number of shapelets used for classification, default 10
+
 maxNumSh: maximum number of shapelets obtained from training, default 200. This parameter is set only to read the correct file.
+
 minNumIters: minimum number of pattern ensemble iterations in training, default 5 if numP >= 10, 1 otherwise. This parameter is set only to read the correct file.
+
 maxNumIters: maximum number of pattern ensemble iterations in training, default numTrain * 2 / 3 - numPLabeled. This parameter is set only to read the correct file.
+
 maxSLen: maximum possible shapelet length, default tsLen
+
 path: input and output path, default "..\\sample_data\\" + datasetName
 
 == Train Propagating-1NN with Propagating_1NN.cu ==
 
 -- necessary parameters --
+
 datasetName: dataset name
+
 numTrain: number of training examples
+
 numP: number of positive training examples
+
 numPLabeled: number of initial positive labeled examples
+
 tsLen: time series length
+
 seed_id: ID of the set of initial positive labeled examples
 
 -- optional parameters --
+
 minNumIters: minimum number of pattern ensemble iterations, default 5 if numP >= 10, 1 otherwise
+
 maxNumIters: maximum number of pattern ensemble iterations, default numTrain * 2 / 3 - numPLabeled
+
 warp: the DTW warping window (ratio of the absolute window length to the time series length), default 0, in which case the settings on the UCR website is used.
+
 maxThreadsPerBlock: number of threads in each GPU block, default 8
+
 maxBlocksPerGrid: number of blocks in each GPU grid, default 8
+
 datasetInfoPath: the path to a file named "InfoAll" which contains informations of UCR datasets extracted from the UCR website, default "..\\sample_data\\"
+
 path: input and output path, default dataInfoPath + "\\" + datasetName
 
 == Classification with classify_Propagating_1NN.cu ==
 
 -- necessary parameters --
+
 datasetName: dataset name
+
 numTrain: number of training examples
+
 numP: number of positive training examples
+
 numPLabeled: number of initial positive labeled examples
+
 tsLen: time series length
+
 numTest: number of test examples
+
 seed_id: ID of the set of initial positive labeled examples
 
 -- optional parameters --
 minNumIters: minimum number of pattern ensemble iterations in training, default 5 if numP >= 10, 1 otherwise. This parameter is set only to read the correct file.
+
 maxNumIters: maximum number of pattern ensemble iterations in training, default numTrain * 2 / 3 - numPLabeled. This parameter is set only to read the correct file.
+
 maxThreadsPerBlock: number of threads in each GPU block, default 8
+
 maxBlocksPerGrid: number of blocks in each GPU grid, default 8
+
 path: input and output path, default "..\\sample_data\\" + datasetName
 
