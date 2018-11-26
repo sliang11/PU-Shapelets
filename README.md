@@ -64,11 +64,17 @@ seed_id: ID of the set of initial positive labeled examples
 -- optional parameters --
 
 maxNumSh: maximum number of (assumed) shapelets, default 200
+
 minNumIters: minimum number of pattern ensemble iterations, default 5 if numP >= 10, 1 otherwise
+
 maxNumIters: maximum number of pattern ensemble iterations, default numTrain * 2 / 3 - numPLabeled
+
 minSLen: minimum shapelet length, default 10
+
 maxSLen: maximum shapelet length, default tsLen
+
 sLenStep: shapelet length step, default (maxSLen - minSLen) / 10
+
 path: input and output path, default "..\\sample_data\\" + datasetName
 
 ===== Classification with classify_PUSh.cpp =====
@@ -154,6 +160,7 @@ numTest: number of test examples
 seed_id: ID of the set of initial positive labeled examples
 
 -- optional parameters --
+
 minNumIters: minimum number of pattern ensemble iterations in training, default 5 if numP >= 10, 1 otherwise. This parameter is set only to read the correct file.
 
 maxNumIters: maximum number of pattern ensemble iterations in training, default numTrain * 2 / 3 - numPLabeled. This parameter is set only to read the correct file.
