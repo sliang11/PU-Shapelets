@@ -24,8 +24,8 @@ We have provided two sample datasets. For more datasets, please download them fr
 	Abdullah Mueen and Gustavo Batista (2018). The UCR Time Series Classification Archive. 
 	URL https://www.cs.ucr.edu/~eamonn/time_series_data_2018/
 
-Due the large size of the test set of MALLAT, Classify_Propagating_1NN.cu can run for 
-a VERY LONG time (several hours per seed) on this dataset. We STRONGLY advise you begin
+Due to the large size of the test set of MALLAT, Classify_Propagating_1NN.cu can run for 
+a VERY LONG time (several hours per seed) on this dataset. We STRONGLY suggest that you begin
 by classifying the Car dataset when testing the P-1NN algorithms.
 
 == Generate initial positive labeled examples with generateSeeds.m ==
