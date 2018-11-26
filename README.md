@@ -18,6 +18,7 @@ In our output files, if an algorithm fails to classify any examples as being pos
 its precision and F-scores may be set to -1.
 
 We have provided two sample datasets. For more datasets, please download them from the UCR archive:
+
 	Hoang Anh Dau, Eamonn Keogh, Kaveh Kamgar, Chin-Chia Michael Yeh, Yan Zhu, Shaghayegh Gharghabi , 
 	Chotirat Ann Ratanamahatana, Yanping Chen, Bing Hu, Nurjahan Begum, Anthony Bagnall , 
 	Abdullah Mueen and Gustavo Batista (2018). The UCR Time Series Classification Archive. 
@@ -81,9 +82,6 @@ maxSLen: maximum possible shapelet length, default tsLen
 path: input and output path, default "..\\sample_data\\" + datasetName
 
 == Train Propagating-1NN with Propagating_1NN.cu ==
--- examples --
-train_P1NN MALLAT 55 6 1 1024 0
-train_P1NN Car 60 16 2 577 0
 
 -- necessary parameters --
 datasetName: dataset name
@@ -103,9 +101,6 @@ datasetInfoPath: the path to a file named "InfoAll" which contains informations 
 path: input and output path, default dataInfoPath + "\\" + datasetName
 
 == Classification with classify_Propagating_1NN.cu ==
--- examples --
-classify_P1NN MALLAT 55 6 1 1024 2345 0
-classify_P1NN Car 60 16 2 577 60 0
 
 -- necessary parameters --
 datasetName: dataset name
