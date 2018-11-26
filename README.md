@@ -1,5 +1,5 @@
 # dasfaa19_paper270
-This is the source code of DASFAA paper 270. This repository is for reviewing purposes only. All information on the identity of the authors has been hidden.
+This is the source code of DASFAA 2019 paper 270. This repository is for reviewing purposes only. All information on the identity of the authors has been hidden.
 
 There are two directories in this repository:
 
