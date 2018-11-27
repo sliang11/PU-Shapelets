@@ -1,0 +1,4 @@
+Precision: 1
+Recall: 0.785714
+Fscore: 0.88
+Running time (Total / Distance computation): 149.876 / 141.52
