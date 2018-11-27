@@ -5,7 +5,7 @@ There are two directories in this repository:
 
 src: the soruce code of our PU-Shapelets and the baseline methods utilizing the propagating 1NN (P-1NN) framework.
 
-sample_data: sample datasets and a random seed generator for generating initial positive unlabeled examples. The results will also be stored in the dataset directories by default.
+sample_data: sample datasets and a random seed generator for generating initial positive unlabeled examples. The results will also be stored in the dataset directories by default. We have included sample test results for each dataset, using the first of the pre-generated seeds.
 
 ***** How to use the source code *****
 
