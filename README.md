@@ -31,9 +31,9 @@ by classifying the Car dataset when testing the P-1NN algorithms.
 == Generate initial positive labeled examples with generateSeeds.m ==
 
 This is the random seed generator used to generate initial positive labeled examples.
-We have attached the seeds used in our experiments in seeds_Car.txt and seeds_MALLAT.txt,
-however, feel free to generate you own seeds with the seed generator. 
-Nontheless, note that the generated seeds will OVERWRITE the two files.
+We have attached the seeds used in our experiments in seeds_Car.txt and seeds_MALLAT.txt.
+However, feel free to generate you own seeds with the seed generator. 
+Nonetheless, note that the generated seeds will OVERWRITE the two files.
 
 -- necessary parameters --
 
