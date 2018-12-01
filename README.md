@@ -14,7 +14,7 @@ sample_data: sample datasets and a random seed generator for generating initial 
 To accelerate DTW computation for P-1NN, we have applied GPU acceleration. 
 Therefore, you will need GPU and CUDA Toolkit to run the P-1NN algorithms.
 
-In our output files, if an algorithm fails to classify any examples as being positive, 
+In our output files, if an algorithm fails to classify any example as being positive, 
 its precision and F-scores may be set to -1.
 
 We have provided two sample datasets. For more datasets, please download them from the UCR archive:
@@ -24,7 +24,7 @@ We have provided two sample datasets. For more datasets, please download them fr
 	Abdullah Mueen and Gustavo Batista (2018). The UCR Time Series Classification Archive. 
 	URL https://www.cs.ucr.edu/~eamonn/time_series_data_2018/
 
-Due to the large size of the test set of MALLAT, Classify_Propagating_1NN.cu can run for 
+Due to the large size of the test set of MALLAT as well as a large warping window, Classify_Propagating_1NN.cu can run for 
 a VERY LONG time (several hours per seed) on this dataset. We STRONGLY suggest that you begin
 by classifying the Car dataset when testing the P-1NN algorithms.
 
