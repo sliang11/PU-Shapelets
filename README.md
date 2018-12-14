@@ -23,6 +23,8 @@ We have provided two sample datasets. For more datasets, please download them fr
 	Chotirat Ann Ratanamahatana, Yanping Chen, Bing Hu, Nurjahan Begum, Anthony Bagnall , 
 	Abdullah Mueen and Gustavo Batista (2018). The UCR Time Series Classification Archive. 
 	URL https://www.cs.ucr.edu/~eamonn/time_series_data_2018/
+	
+However, we have conducted our experiments on the 2015 version of the UCR archive, which could lead to certain differences in the data.
 
 Due to the large size of the test set of MALLAT as well as a large warping window, Classify_Propagating_1NN.cu can run for 
 a VERY LONG time (several hours per seed) on this dataset. We STRONGLY suggest that you begin
