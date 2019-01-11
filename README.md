@@ -1,8 +1,8 @@
 # PU-Shapelets
 This is the source code of PU-Shapelets, a pattern-based positive unlabeled classification algorithm proposed in
 
-	Shen Liang, Yanchun Zhang, Jiangang Ma: Ensemble based positive unlabeled learning for time series classification. In:
-	International Conference on Database Systems for Advanced Applications (2019, to appear).
+	Shen Liang, Yanchun Zhang, Jiangang Ma: Ensemble based positive unlabeled learning for time series classification. 
+	In: International Conference on Database Systems for Advanced Applications (2019, to appear).
 
 
 
