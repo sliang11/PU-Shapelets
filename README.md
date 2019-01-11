@@ -1,5 +1,7 @@
-# dasfaa19_paper270
-This is the source code of DASFAA 2019 paper 270. This repository is for reviewing purposes only. All information on the identity of the authors has been hidden.
+# PU-Shapelets
+This is the source code of PU-Shapelets, a pattern-based positive unlabeled classification algorithm proposed in
+
+Shen Liang, Yanchun Zhang, Jiangang Ma: Ensemble based positive unlabeled learning for time series classification. In: International Conference on Database Systems for Advanced Applications (2019, to appear).
 
 There are two directories in this repository:
 
