@@ -1,5 +1,5 @@
 # PU-Shapelets
-This is the source code of PU-Shapelets, a pattern-based positive unlabeled classification algorithm proposed in
+This is the source code of PU-Shapelets, a pattern-based positive unlabeled classification algorithm for time series proposed in
 
 	S. Liang, Y. Zhang, J. Ma: Ensemble based positive unlabeled learning for time series classification. 
 	In: International Conference on Database Systems for Advanced Applications (2019, to appear).
