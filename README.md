@@ -24,17 +24,17 @@ its precision and F-scores may be set to -1.
 
 We have provided two sample datasets. For more datasets, please download them from the UCR archive:
 
+	Yanping Chen, Eamonn Keogh, Bing Hu, Nurjahan Begum, Anthony Bagnall, Abdullah Mueen and Gustavo Batista (2015). 
+	The UCR Time Series Classification Archive. URL www.cs.ucr.edu/~eamonn/time_series_data/
+
+Note that we have conducted our experiments on the 2015 version of the UCR archive. For the latest version (2018), please see
+
 	Hoang Anh Dau, Eamonn Keogh, Kaveh Kamgar, Chin-Chia Michael Yeh, Yan Zhu, Shaghayegh Gharghabi , 
 	Chotirat Ann Ratanamahatana, Yanping Chen, Bing Hu, Nurjahan Begum, Anthony Bagnall , 
 	Abdullah Mueen and Gustavo Batista (2018). The UCR Time Series Classification Archive. 
 	URL https://www.cs.ucr.edu/~eamonn/time_series_data_2018/
 	
-This is the latest version of the UCR archive. However, we have conducted our experiments on the 2015 version of the UCR archive:
-	
-	Yanping Chen, Eamonn Keogh, Bing Hu, Nurjahan Begum, Anthony Bagnall, Abdullah Mueen and Gustavo Batista (2015). 
-	The UCR Time Series Classification Archive. URL www.cs.ucr.edu/~eamonn/time_series_data/
-	
-There may be certain differences in the data.
+There are certain differences between the two.
 
 Due to the large size of the test set of MALLAT as well as a large warping window, Classify_Propagating_1NN.cu can run for 
 a VERY LONG time (several hours per seed) on this dataset. We STRONGLY suggest that you begin
@@ -149,7 +149,7 @@ maxThreadsPerBlock: number of threads in each GPU block, default 8
 
 maxBlocksPerGrid: number of blocks in each GPU grid, default 8
 
-datasetInfoPath: the path to a file named "InfoAll" which contains informations of UCR datasets extracted from the UCR website, default "..\\sample_data\\"
+datasetInfoPath: the path to a file named "InfoAll" which contains informations of UCR datasets extracted from the UCR website, default "..\\sample_data\\". Note that this file contains information on the 2015 version of the UCR datasets, not the 2018 version. There are certain differences (e.g. different train/test separation, new datasets, etc.) between the two.
 
 path: input and output path, default dataInfoPath + "\\" + datasetName
 
