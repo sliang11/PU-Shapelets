@@ -12,6 +12,8 @@ src: the source code of our PU-Shapelets and the baseline methods utilizing the 
 
 sample_data: sample datasets and a random seed generator for generating initial positive unlabeled examples. The results will also be stored in the dataset directories by default. We have included sample test results for each dataset, using the first of the pre-generated seeds.
 
+In addition, all our raw experimental results can be found in Fscores.xlsx and Running time.xlsx.
+
 ***** How to use the source code *****
 
 == Note to users ==
