@@ -21,7 +21,7 @@ In addition, all our raw experimental results can be found in Fscores.xlsx and R
 To accelerate DTW computation for P-1NN, we have applied GPU acceleration. 
 Therefore, you will need GPU and CUDA Toolkit to run the P-1NN algorithms.
 
-In our output files, if an algorithm fails to classify any example as being positive, 
+In our output files, if an algorithm fails to a stopping point, or fails to classify any example as being positive, 
 its precision and F-scores may be set to -1.
 
 We have provided two sample datasets. For more datasets, please download them from the UCR archive:
