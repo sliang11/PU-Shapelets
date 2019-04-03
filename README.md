@@ -1,5 +1,6 @@
 # Support 996.icu
 I am proudly in support of the 996.icu initiative which upholds the labor rights of Chinese IT practitioners. Check out more by clicking the link below.
+
 <a href="https://996.icu"><img src="https://img.shields.io/badge/link-996.icu-red.svg" alt="996.icu" /></a>
 
 
