@@ -185,3 +185,5 @@ maxBlocksPerGrid: number of blocks in each GPU grid, default 8
 
 path: input and output path, default "..\\sample_data\\" + datasetName
 
+<a href="https://996.icu"><img src="https://img.shields.io/badge/link-996.icu-red.svg" alt="996.icu" /></a>
+
