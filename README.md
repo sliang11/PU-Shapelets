@@ -1,3 +1,8 @@
+# Support 996.icu
+I am proudly in support of the 996.icu initiative which upholds the labor rights of Chinese IT practitioners. Check out more by clicking the link below.
+<a href="https://996.icu"><img src="https://img.shields.io/badge/link-996.icu-red.svg" alt="996.icu" /></a>
+
+
 # PU-Shapelets
 This is the source code of PU-Shapelets, a pattern-based positive unlabeled classification algorithm for time series proposed in
 
@@ -184,6 +189,4 @@ maxThreadsPerBlock: number of threads in each GPU block, default 8
 maxBlocksPerGrid: number of blocks in each GPU grid, default 8
 
 path: input and output path, default "..\\sample_data\\" + datasetName
-
-<a href="https://996.icu"><img src="https://img.shields.io/badge/link-996.icu-red.svg" alt="996.icu" /></a>
 
