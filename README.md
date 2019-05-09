@@ -7,9 +7,7 @@ I am proudly in support of the 996.icu initiative which upholds the labor rights
 # PU-Shapelets
 This is the source code of PU-Shapelets, a pattern-based positive unlabeled classification algorithm for time series proposed in
 
-	S. Liang, Y. Zhang, J. Ma: PU-Shapelets: Towards Pattern-based Positive Unlabeled Classification of Time Series. 
-	In: International Conference on Database Systems for Advanced Applications (2019, to appear).
-
+	Shen Liang, Yanchun Zhang, Jiangang Ma: PU-Shapelets: Towards Pattern-Based Positive Unlabeled Classification of Time Series. 		DASFAA (1) 2019: 87-103
 
 
 There are two directories in this repository:
@@ -19,6 +17,27 @@ src: the source code of our PU-Shapelets and the baseline methods utilizing the 
 sample_data: sample datasets and a random seed generator for generating initial positive unlabeled examples. The results will also be stored in the dataset directories by default. We have included sample test results for each dataset, using the first of the pre-generated seeds.
 
 In addition, all our raw experimental results can be found in Fscores.xlsx and Running time.xlsx.
+
+***** Notes on our paper *****
+
+Due to a lack of knowledge at the time of writing the paper, the following claims in our paper are questionable.
+
+In the first paragraph of the introduction part, we claimed that "...To the best of our knowledge, no conventional
+supervised TSC methods can be applied to such cases where only one class is labeled...". However, the following paper has recently come to our notice.
+
+	Akihiro Yamaguchi, Takeichiro Nishikawa: One-Class Learning Time-Series Shapelets. BigData 2018: 2365-2372
+
+The method presented in this paper learns shapelets using only the majority class. We have not yet had the time to read the paper more thoroughly, so we are not sure whether this method can train a classifier using only one class, but this certainly remains a possibility.
+
+Also, in the third paragraph of the introduction part of our paper, we claimed that to the best of our knowledge, we are the first to take on PU discovery of shapelets. However, the following paper has recently come to our notice.
+
+	Haishuai Wang, Qin Zhang, Jia Wu, Shirui Pan, Yixin Chen: Time Series Feature Learning with Labeled and Unlabeled Data.
+	Pattern Recogonition 89: 55-66 (2019)
+	
+This paper deals with semi-supervised learning of shapelets. Again, we have not yet had the time to read the paper more thoroughly, so we are not sure whether it can handle PU data. Again, this remains a possibility. 
+
+We express our sincere apology for any confusion or inconvenience. We will more thoroughly study the aforementioned two papers to reach a definitive conclusion.
+
 
 ***** How to use the source code *****
 
