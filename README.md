@@ -7,7 +7,8 @@ I am proudly in support of the 996.icu initiative which upholds the labor rights
 # PU-Shapelets
 This is the source code of PU-Shapelets, a pattern-based positive unlabeled classification algorithm for time series proposed in
 
-	Shen Liang, Yanchun Zhang, Jiangang Ma: PU-Shapelets: Towards Pattern-Based Positive Unlabeled Classification of Time Series. 		DASFAA (1) 2019: 87-103
+	Shen Liang, Yanchun Zhang, Jiangang Ma: PU-Shapelets: Towards Pattern-Based Positive Unlabeled Classification of Time Series.
+	DASFAA (1) 2019: 87-103
 
 
 There are two directories in this repository:
