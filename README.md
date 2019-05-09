@@ -30,7 +30,7 @@ supervised TSC methods can be applied to such cases where only one class is labe
 
 The method presented in this paper learns shapelets using only the majority class. We have not yet had the time to read the paper more thoroughly, so we are not sure whether this method can train a classifier using only one class, but this certainly remains a possibility.
 
-Also, in the third paragraph of the introduction part of our paper, we claimed that to the best of our knowledge, we are the first to take on PU discovery of shapelets. However, the following paper has recently come to our notice.
+Also, in the third paragraph of the introduction part of our paper, we claimed that to the best of our knowledge, we were the first to take on PU discovery of shapelets. However, the following paper has recently come to our notice.
 
 	Haishuai Wang, Qin Zhang, Jia Wu, Shirui Pan, Yixin Chen: Time Series Feature Learning with Labeled and Unlabeled Data.
 	Pattern Recogonition 89: 55-66 (2019)
