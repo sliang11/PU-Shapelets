@@ -13,7 +13,7 @@ This is the source code of PU-Shapelets, a pattern-based positive unlabeled clas
 
 There are two directories in this repository:
 
-src: the source code of our PU-Shapelets and the baseline methods utilizing the propagating 1NN (P-1NN) framework.
+src: the source code of our PU-Shapelets.
 
 sample_data: sample datasets and a random seed generator for generating initial positive unlabeled examples. The results will also be stored in the dataset directories by default. We have included sample test results for each dataset, using the first of the pre-generated seeds.
 
@@ -44,12 +44,6 @@ We express our sincere apology for any confusion or inconvenience. We will more 
 
 == Note to users ==
 
-To accelerate DTW computation for P-1NN, we have applied GPU acceleration. 
-Therefore, you will need GPU and CUDA Toolkit to run the P-1NN algorithms.
-
-In our output files, if an algorithm fails to a stopping point, or fails to classify any example as being positive, 
-its precision and F-scores may be set to -1.
-
 We have provided two sample datasets. For more datasets, please download them from the UCR archive:
 
 	Yanping Chen, Eamonn Keogh, Bing Hu, Nurjahan Begum, Anthony Bagnall, Abdullah Mueen and Gustavo Batista (2015). 
@@ -63,10 +57,6 @@ Note that we have conducted our experiments on the 2015 version of the UCR archi
 	URL https://www.cs.ucr.edu/~eamonn/time_series_data_2018/
 	
 There are certain differences between the two.
-
-Due to the large size of the test set of MALLAT as well as a large warping window, Classify_Propagating_1NN.cu can run for 
-a VERY LONG time (several hours per seed) on this dataset. We STRONGLY suggest that you begin
-by classifying the Car dataset when testing the P-1NN algorithms.
 
 == Generate initial positive labeled examples with generateSeeds.m ==
 
@@ -148,66 +138,3 @@ maxNumIters: maximum number of pattern ensemble iterations in training, default 
 maxSLen: maximum possible shapelet length, default tsLen
 
 path: input and output path, default "..\\sample_data\\" + datasetName
-
-== Train Propagating-1NN with Propagating_1NN.cu ==
-
--- necessary parameters --
-
-datasetName: dataset name
-
-numTrain: number of training examples
-
-numP: number of positive training examples
-
-numPLabeled: number of initial positive labeled examples
-
-tsLen: time series length
-
-seed_id: ID of the set of initial positive labeled examples
-
--- optional parameters --
-
-minNumIters: minimum number of pattern ensemble iterations, default 5 if numP >= 10, 1 otherwise
-
-maxNumIters: maximum number of pattern ensemble iterations, default numTrain * 2 / 3 - numPLabeled
-
-warp: the DTW warping window (ratio of the absolute window length to the time series length), default 0, in which case the settings on the UCR website is used.
-
-maxThreadsPerBlock: number of threads in each GPU block, default 8
-
-maxBlocksPerGrid: number of blocks in each GPU grid, default 8
-
-datasetInfoPath: the path to a file named "InfoAll" which contains informations of UCR datasets extracted from the UCR website, default "..\\sample_data\\". Note that this file contains information on the 2015 version of the UCR datasets, not the 2018 version. There are certain differences (e.g. different train/test separation, new datasets, etc.) between the two.
-
-path: input and output path, default dataInfoPath + "\\" + datasetName
-
-== Classification with classify_Propagating_1NN.cu ==
-
--- necessary parameters --
-
-datasetName: dataset name
-
-numTrain: number of training examples
-
-numP: number of positive training examples
-
-numPLabeled: number of initial positive labeled examples
-
-tsLen: time series length
-
-numTest: number of test examples
-
-seed_id: ID of the set of initial positive labeled examples
-
--- optional parameters --
-
-minNumIters: minimum number of pattern ensemble iterations in training, default 5 if numP >= 10, 1 otherwise. This parameter is set only to read the correct file.
-
-maxNumIters: maximum number of pattern ensemble iterations in training, default numTrain * 2 / 3 - numPLabeled. This parameter is set only to read the correct file.
-
-maxThreadsPerBlock: number of threads in each GPU block, default 8
-
-maxBlocksPerGrid: number of blocks in each GPU grid, default 8
-
-path: input and output path, default "..\\sample_data\\" + datasetName
-
