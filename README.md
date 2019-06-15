@@ -41,7 +41,7 @@ Last, we may have some confusions as to the precision-recall breakeven point (P-
 
 	Li Wei, Eamonn J. Keogh: Semi-supervised time series classification. KDD 2006: 748-753
 
-the P-R breakeven point varies with the number of labeled examples. We currently have no idea how the authors of this paper were able to calculate the P-R breakeven point when the number of labeled examples is not equal to the actual number of positive examples.
+the P-R breakeven point varies with the number of labeled examples. We currently have no idea how the authors of this paper were able to calculate the P-R breakeven point when the number of labeled examples is not equal to the actual number of positive examples. Maybe we have some misunderstandings as to what P-R breakeven point means in this paper.
 
 We express our sincere apology for any confusion or inconvenience. We will more thoroughly study the aforementioned issues to reach a definitive conclusion. Please also advise us on these issues if you have any ideas on their solutions.
 
