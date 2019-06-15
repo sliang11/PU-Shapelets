@@ -37,7 +37,13 @@ Also, in the third paragraph of the introduction part of our paper, we claimed t
 	
 This paper deals with semi-supervised learning of shapelets. Again, we have not yet had the time to read the paper more thoroughly, so we are not sure whether it can handle PU data. Again, this remains a possibility. 
 
-We express our sincere apology for any confusion or inconvenience. We will more thoroughly study the aforementioned two papers to reach a definitive conclusion.
+Last, we may have some confusions as to the precision-recall breakeven point (P-R breakeven point) metric. By definition, P-R breakeven point is the point where precision equals recall. We were able to deduce that following the U example ranking algorithms used in our paper as well as the baselines, the P-R breakeven point is the point where the number of labeled examples equals the actual number of positive examples in the training set, and it should be unique. However, it has come to our notice that in one of our baseline papers, namely
+
+	Li Wei, Eamonn J. Keogh: Semi-supervised time series classification. KDD 2006: 748-753
+
+the P-R breakeven point varies with the number of labeled examples. We currently have no idea how the authors of this paper were able to calculate the P-R breakeven point when the number of labeled examples is not equal to the actual number of positive examples.
+
+We express our sincere apology for any confusion or inconvenience. We will more thoroughly study the aforementioned issues to reach a definitive conclusion. Please also advise us on these issues if you have any ideas on their solutions.
 
 
 ***** How to use the source code *****
