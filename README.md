@@ -4,7 +4,7 @@ I am proudly in support of the 996.icu initiative which upholds the labor rights
 <a href="https://996.icu"><img src="https://img.shields.io/badge/link-996.icu-red.svg" alt="996.icu" /></a>
 
 # IMPORTANT NOTES
-We have recently discovered some code bugs in our source code, which may very well have lead to incorrect experiment results. We are currently correcting these mistakes. We will update the code as well as the experimental results in this repository as soon as possible. We sincerely apologize for the inconvenience.
+We have recently discovered some code bugs in our source code, which may very well have lead to incorrect experimental results. We are currently correcting these mistakes. We will update the code as well as the experimental results in this repository as soon as possible. We sincerely apologize for the inconvenience.
 
 # PU-Shapelets
 This is the source code of PU-Shapelets, a pattern-based positive unlabeled classification algorithm for time series proposed in
