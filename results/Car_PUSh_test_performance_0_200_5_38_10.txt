@@ -1,0 +1,4 @@
+Precision: 1
+Recall: 0.857143
+Fscore: 0.923077
+Avg time per test example: 0.00703333
