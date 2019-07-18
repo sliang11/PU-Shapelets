@@ -244,11 +244,11 @@ int sc_BHRK(double *tss, int *rankedInds, int *hypoSeq, int *nextSeq,
 	int minNumP, int maxNumP, int numTrain, int numPLabeled, int tsLen, int card) {
 
 	double *ts;
-	int cumNumMiss, preNumP, optPreNumP, curRdl, prevRdl, minRdl = INF;
+	int cumNumMiss, preNumP, optPreNumP, curRdl, prevRdl, minRdl = INF;	//Here INF = 1e6, which is okay for the 21 datasets used in our experiments, but may not be enough for other data. Consider changing it to a larger value.
 	for (int i = 0; i < numPLabeled; i++) {
 		ts = tss + rankedInds[i] * tsLen;
 		discretize(hypoSeq, ts, tsLen, card);
-		prevRdl = INF;
+		prevRdl = INF;	//Here INF = 1e6, which is okay for the 21 datasets used in our experiments, but may not be enough for other data. Consider changing it to a larger value.
 		cumNumMiss = 0;
 		preNumP = 0;
 		for (int j = numPLabeled; j < maxNumP; j++) {
@@ -377,7 +377,7 @@ std::vector<std::tuple<int, int, int, int>> getIntervals(double *minNNDists, int
 	return intervals;
 }
 
-//Mabel Gonz¨¢lez Castellanos, Christoph Bergmeir, Isaac Triguero, Yanet Rodr¨ªguez, Jos¨¦ Manuel Ben¨ªtez: On the stopping criteria for k - Nearest Neighbor in positive unlabeled time series classification problems. Inf.Sci. 328: 42-59 (2016)
+//Mabel GonzÂ¨Â¢lez Castellanos, Christoph Bergmeir, Isaac Triguero, Yanet RodrÂ¨Âªguez, JosÂ¨Â¦ Manuel BenÂ¨Âªtez: On the stopping criteria for k - Nearest Neighbor in positive unlabeled time series classification problems. Inf.Sci. 328: 42-59 (2016)
 void sc_GBTRM(int *preNumPs, double *minNNDists, int minNumP, int maxNumP, int numTrain, int numPLabeled, double beta) {
 
 	int initNumU = numTrain - numPLabeled;
