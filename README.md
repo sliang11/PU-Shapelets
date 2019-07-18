@@ -4,24 +4,26 @@ I am proudly in support of the 996.icu initiative which upholds the labor rights
 <a href="https://996.icu"><img src="https://img.shields.io/badge/link-996.icu-red.svg" alt="996.icu" /></a>
 
 # IMPORTANT NOTES
-We have recently discovered some code bugs in our source code, which may very well have lead to incorrect experimental results. We are currently correcting these mistakes. We will update the code as well as the experimental results in this repository as soon as possible. We sincerely apologize for the inconvenience.
+We have discovered some code bugs in our source code, which have affected the experimental results reported in our paper to some extent. We have done our best to rectified the bugs and have updated our corrected code and experimental results in this repository. We are pleased to say that the vast majority of our findings in our paper still holds after rectification. We will discuss the expreimental results later in this readme file. We apologize for any inconvenience caused by our mistakes.
 
-# PU-Shapelets
+# Overview
 This is the source code of PU-Shapelets, a pattern-based positive unlabeled classification algorithm for time series proposed in
 
 	Shen Liang, Yanchun Zhang, Jiangang Ma: PU-Shapelets: Towards Pattern-Based Positive Unlabeled Classification of Time Series.
 	DASFAA (1) 2019: 87-103
 
 
-There are two directories in this repository:
+There are four directories in this repository:
 
-src: the source code of our PU-Shapelets.
+PUSh: the C++ source code of our PU-Shapelets (PUSh) algorithm.
 
-sample_data: sample datasets and a random seed generator for generating initial positive unlabeled examples. The results will also be stored in the dataset directories by default. We have included sample test results for each dataset, using the first of the pre-generated seeds.
+P1NN: the CUDA-C source code of the propagating one-nearest-neighbor (P1NN) baselines.
 
-In addition, all our raw experimental results can be found in Fscores.xlsx and Running time.xlsx.
+sample_data: sample datasets and a random seed generator for generating initial positive unlabeled examples.
 
-***** Notes on our paper *****
+results: the raw results (F-score and running time) on all datasets and the updated figures. We will elaborate on the experimental results later. Also, we have included the output files for each sample dataset, using the first of the pre-generated seeds. 
+
+# Notes on our paper
 
 Due to a lack of knowledge at the time of writing the paper, the following claims in our paper are questionable.
 
@@ -48,9 +50,9 @@ the P-R breakeven point varies with the number of labeled examples. We currently
 We express our sincere apology for any confusion or inconvenience. We will more thoroughly study the aforementioned issues to reach a definitive conclusion. Please also advise us on these issues if you have any ideas on their solutions.
 
 
-***** How to use the source code *****
+# Usage of source code
 
-== Note to users ==
+== On the datasets ==
 
 We have provided two sample datasets. For more datasets, please download them from the UCR archive:
 
@@ -64,7 +66,11 @@ Note that we have conducted our experiments on the 2015 version of the UCR archi
 	Abdullah Mueen and Gustavo Batista (2018). The UCR Time Series Classification Archive. 
 	URL https://www.cs.ucr.edu/~eamonn/time_series_data_2018/
 	
-There are certain differences between the two.
+There are certain differences between the two. Please refer to the UCR datasets briefing paper for details.
+
+== On the implementation of the P1NN baselines
+
+The P1NN baselines involve calculations of DTW distances. Brute-force calculation of DTW is painfully slow. Therefore, we have applied GPU acceleration. To run the P1NN baselines, you would need NVIDIA graphics card and CUDA toolkit. However, our PUSh algorithm is purely CPU-based. Also, for the P1NN online classification phase on the MALLAT dataset, it can still take a long time even with GPU acceleration. We strongly recomment beginning with the Car dataset.
 
 == Generate initial positive labeled examples with generateSeeds.m ==
 
@@ -113,7 +119,9 @@ maxSLen: maximum shapelet length, default tsLen
 
 sLenStep: shapelet length step, default (maxSLen - minSLen) / 10
 
-path: input and output path, default "..\\sample_data\\" + datasetName
+path: dataset path, default "..\\sample_data\\" + datasetName
+
+outputPath: output path, default "..\\results"
 
 ===== Classification with classify_PUSh.cpp =====
 
@@ -145,4 +153,8 @@ maxNumIters: maximum number of pattern ensemble iterations in training, default 
 
 maxSLen: maximum possible shapelet length, default tsLen
 
-path: input and output path, default "..\\sample_data\\" + datasetName
+path: dataset path, default "..\\sample_data\\" + datasetName
+
+outputPath: output path, default "..\\results"
+
+===== Training P1NN with P1NN.cu =====
