@@ -227,4 +227,11 @@ outputPath: output path, default "..\\results"
 
 # On the corrected experimental results
 
+Due to some bugs in the original code (which has been corrected and updated in this repository), there are certain inaccuracies in the experimental results reported in our paper. The rectified results are stored in the "results" directory in this repository. Specifically, F-scores.xlsx reports the raw average F1-scores. Running time.xlsx reports the average running time of our PUSh algorithm. The .png files are updated figures which correspond to the ones appearing in the original paper. We will elaborate on them later.
+
+===== Notes on precision, recall and F1-score calculation =====
+
+The calculation of precision (P), recall (R) and F1-score (F) can run into divide-by-zero situations, in which cases their values are ill-defined. In such cases, our implementation will set their values to -1. We measure the performances of all methods by their F1-scores in the training and classification phases. When F is -1, we reset it to 0 before calculating the average scores (reported in F-scores.xlsx) for comparison. Such cases occur when the true positive (TP) value is 0, meaning that either an algorithm fails to detect any positive examples in the unlabeled data, or none of the ones classified as positive are actually positive. Note that it is not always advisable to replace the -1 values to 0. For example, if true positive, false negative and false positive values are all 0, we should set P, R, F all to 1, since the algorithm correctly decides that there are no positive examples in the unlabeled data. However, this is impossible in our case, for there are always unlabeled positive examples, both in the U set of the training set and the testing set.
+
+For the five GBTRM stopping criteria for the P1NN algorithm, sometimes they cannot determine a stopping point. In such cases, our implementation will set both the training and classification F values to -2, indicating that the stopping criterion is ineffective on this dataset. Such F values are reset to 0 before calculating the average scores (reported in F-scores.xlsx) for comparison.
 
