@@ -123,7 +123,7 @@ path: dataset path, default "..\\sample_data\\" + datasetName
 
 outputPath: output path, default "..\\results"
 
-===== Classification with classify_PUSh.cpp =====
+===== Classification with Classify_PUSh.cpp =====
 
 -- necessary parameters --
 
@@ -158,3 +158,73 @@ path: dataset path, default "..\\sample_data\\" + datasetName
 outputPath: output path, default "..\\results"
 
 ===== Training P1NN with P1NN.cu =====
+
+-- necessary parameters --
+
+datasetName: dataset name
+
+numTrain: number of training examples
+
+numP: number of positive training examples
+
+numPLabeled: number of initial positive labeled examples
+
+tsLen: time series length
+
+seed_id: ID of the set of initial positive labeled examples
+
+-- optional parameters --
+
+minNumIters: minimum number of P1NN iterations in training, default 5 if numP >= 10
+
+maxNumIters: maximum number of P1NN iterations in training, default numTrain * 2 / 3 - numPLabeled
+
+warp: the warping window for DTW and DTW-D, default 0, in which case we use the provided warping window on the UCR webpage. We will discuss this later.
+
+maxThreadsPerBlock: the maximum number of threads per GPU block for DTW calculation, default 8. This setting is reserved for large datasets. For small datasets, it is advisable to increase this number for maximum performance. Please refer to the CUDA documentation for more.
+
+maxBlocksPerGrid: the maximum number of block per GPU grid for DTW calculation, default 8. This setting is reserved for large datasets. For small datasets, it is advisable to increase this number for maximum performance. Please refer to the CUDA documentation for more.
+
+dataInfoPath: the path to the file "InfoAll" which contains information on the 2015 version of the UCR datasets, default "..\\sample_data\\"
+
+path: dataset path, default "..\\sample_data\\" + datasetName
+
+outputPath: output path, default "..\\results"
+
+===== Classification with Classify_P1NN.cu =====
+
+-- necessary parameters --
+
+datasetName: dataset name
+
+numTrain: number of training examples
+
+numP: number of positive training examples
+
+numPLabeled: number of initial positive labeled examples
+
+tsLen: time series length
+
+numTest: number of test examples
+
+seed_id: ID of the set of initial positive labeled examples
+
+-- optional parameters --
+
+minNumIters: minimum number of P1NN iterations in training, default 5 if numP >= 10. This parameter is set only to read the correct file.
+
+maxNumIters: maximum number of P1NN iterations in training, default numTrain * 2 / 3 - numPLabeled. This parameter is set only to read the correct file.
+
+maxThreadsPerBlock: the maximum number of threads per GPU block for DTW calculation, default 8. This setting is reserved for large datasets. For small datasets, it is advisable to increase this number for maximum performance. Please refer to the CUDA documentation for more.
+
+maxBlocksPerGrid: the maximum number of block per GPU grid for DTW calculation, default 8. This setting is reserved for large datasets. For small datasets, it is advisable to increase this number for maximum performance. Please refer to the CUDA documentation for more.
+
+dataInfoPath: the path to the file "InfoAll" which contains information on the 2015 version of the UCR datasets, default "..\\sample_data\\"
+
+path: dataset path, default "..\\sample_data\\" + datasetName
+
+outputPath: output path, default "..\\results"
+
+# On the corrected experimental results
+
+
