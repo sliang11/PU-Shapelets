@@ -229,9 +229,27 @@ outputPath: output path, default "..\\results"
 
 Due to some bugs in the original code (which has been corrected and updated in this repository), there are certain inaccuracies in the experimental results reported in our paper. The rectified results are stored in the "results" directory in this repository. Specifically, F-scores.xlsx reports the raw average F1-scores. Running time.xlsx reports the average running time of our PUSh algorithm. The .png files are updated figures which correspond to the ones appearing in the original paper. We will elaborate on them later.
 
-===== Notes on precision, recall and F1-score calculation =====
+===== On precision, recall and F1-score calculation =====
 
 The calculation of precision (P), recall (R) and F1-score (F) can run into divide-by-zero situations, in which cases their values are ill-defined. In such cases, our implementation will set their values to -1. We measure the performances of all methods by their F1-scores in the training and classification phases. When F is -1, we reset it to 0 before calculating the average scores (reported in F-scores.xlsx) for comparison. Such cases occur when the true positive (TP) value is 0, meaning that either an algorithm fails to detect any positive examples in the unlabeled data, or none of the ones classified as positive are actually positive. Note that it is not always advisable to replace the -1 values to 0. For example, if true positive, false negative and false positive values are all 0, we should set P, R, F all to 1, since the algorithm correctly decides that there are no positive examples in the unlabeled data. However, this is impossible in our case, for there are always unlabeled positive examples, both in the U set of the training set and the testing set.
 
 For the five GBTRM stopping criteria for the P1NN algorithm, sometimes they cannot determine a stopping point. In such cases, our implementation will set both the training and classification F values to -2, indicating that the stopping criterion is ineffective on this dataset. Such F values are reset to 0 before calculating the average scores (reported in F-scores.xlsx) for comparison.
 
+===== On ploting the critical difference diagram =====
+To plot the critical difference diagrams, we use 1-F as the input metric, which is equal to Van Rijsbergen's effectiveness measure with alpha = 0.5. See https://en.wikipedia.org/wiki/F1_score for more.
+
+We display the diagram for our PUSh and top-10 ranking baseline methods. By top-10 baseline methods, we mean that when all 25 methods are displayed in one diagram, these methods are the first 10 baseline methods (excluding PUSh) to the right of the diagram.
+
+===== On the P1NN results =====
+Recall that our PUSh algorithm requires setting of th lower and upper bounds of the number of positive and unlabeled examples. For fairness to the P1NN algorithms, we independently conduct two experiments on them. In one of them, we set the same bounds as PUSh. In the other, we set no bounds, which means the minimum allowed number of positive and unlabeled examples is 1, and the maximum number is numTrain - 1 - numPLabeled where numTrain is the training set size and numPLabeled is the number of initially labeled examples. We select the better one from these two runs for final comparison. 
+
+In each one of these two runs, for certain datasets, there are a range of available DTW warping windows to choose from for DTW and DTW-D. Also, for the WK criterion, we can pick from a range of possible stopping points. In such cases, we pick the setting (DTW warping window, stopping point or the combination of both) that yield the best training performance, and report the training and testing performances under such a setting. Please refer to our source code for details.
+
+===== On the performance of U example ranking methods ====
+The corrected figures reporting U example ranking methods (Fig. 8 in the original paper) are provided as raw_trans_oracle.png (raw results) and cd_trans_oracle.png (critical difference diagram). Our conclusion in the paper still holds: There are no significant differences among the performances of the three baseline methods. Our PE outperforms them all and significantly outperforms DTW.
+
+===== On the performance of labeling the U set =====
+The corrected figures reporting U set labeling methods (Fig. 9 in the original paper) are provided as raw_trans_sc.png (raw results) and cd_trans_sc.png (critical difference diagram). Our conclusion in the paper still holds: No significant difference is observed among the baselines. Most top ranking baselines utilize one of G1-G5. PUSh significantly outperforms the top-10 baselines. Also, it appears that baselines with stopping criterion W performs well among all baselines. However, since we have favored W in the experimental settings, the advantage displayed here may not still hold when such bias is withdrawn.
+
+===== On the performance of Online Classification =====
+The corrected figures reporting U set labeling methods (Fig. 10 in the original paper) are provided as raw_induc_sc.png (raw results) and cd_induc_sc.png (critical difference diagram). 
