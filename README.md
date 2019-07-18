@@ -236,23 +236,29 @@ The calculation of precision (P), recall (R) and F1-score (F) can run into divid
 For the five GBTRM stopping criteria for the P1NN algorithm, sometimes they cannot determine a stopping point. In such cases, our implementation will set both the training and classification F values to -2, indicating that the stopping criterion is ineffective on this dataset. Such F values are reset to 0 before calculating the average scores (reported in F-scores.xlsx) for comparison.
 
 ===== On ploting the critical difference diagram =====
+
 To plot the critical difference diagrams, we use 1-F as the input metric, which is equal to Van Rijsbergen's effectiveness measure with alpha = 0.5. See https://en.wikipedia.org/wiki/F1_score for more.
 
 We display the diagram for our PUSh and top-10 ranking baseline methods. By top-10 baseline methods, we mean that when all 25 methods are displayed in one diagram, these methods are the first 10 baseline methods (excluding PUSh) to the right of the diagram.
 
 ===== On the P1NN results =====
+
 Recall that our PUSh algorithm requires setting of th lower and upper bounds of the number of positive and unlabeled examples. For fairness to the P1NN algorithms, we independently conduct two experiments on them. In one of them, we set the same bounds as PUSh. In the other, we set no bounds, which means the minimum allowed number of positive and unlabeled examples is 1, and the maximum number is numTrain - 1 - numPLabeled where numTrain is the training set size and numPLabeled is the number of initially labeled examples. We select the better one from these two runs for final comparison. 
 
 In each one of these two runs, for certain datasets, there are a range of available DTW warping windows to choose from for DTW and DTW-D. Also, for the WK criterion, we can pick from a range of possible stopping points. In such cases, we pick the setting (DTW warping window, stopping point or the combination of both) that yield the best training performance, and report the training and testing performances under such a setting. Please refer to our source code for details.
 
 ===== On the performance of U example ranking methods ====
+
 The corrected figures reporting U example ranking methods (Fig. 8 in the original paper) are provided as raw_trans_oracle.png (raw results) and cd_trans_oracle.png (critical difference diagram). Our conclusion in the paper still holds: There are no significant differences among the performances of the three baseline methods. Our PE outperforms them all and significantly outperforms DTW.
 
 ===== On the performance of labeling the U set =====
+
 The corrected figures reporting U set labeling methods (Fig. 9 in the original paper) are provided as raw_trans_sc.png (raw results) and cd_trans_sc.png (critical difference diagram). Our conclusion in the paper still holds: No significant difference is observed among the baselines. PUSh significantly outperforms the top-10 baselines. Most top ranking baselines utilize one of G1-G5. However, contrary to our analysis in our original paper, we now suspect that maybe the performance of G1-G5 is not so impressive after all. The reason is that out of 24 baselines, 15 apply one of G1-G5. The large number of baselines utilizing G1-G5 means that it is no surprise many baselines with G1-G5 end up in the top-10. By contrast, out of the three baselines using R, two makes it into the top-10, and all three baselines with W are among the top-10. Note however that while it appears that the baselines with W performs well among all baselines. recall that we have favored W in the experimental settings, and the advantage displayed here may not still hold when such bias is withdrawn.
 
 ===== On the performance of Online Classification =====
+
 The corrected figures reporting U set labeling methods (Fig. 10 in the original paper) are provided as raw_induc_sc.png (raw results) and cd_induc_sc.png (critical difference diagram). Our conclusions in the paper still holds. First, the number of shapelets does not significantly affect the classification performance of PE. We have set this value to 10 : 10 : 50 and performed pairwise Wilcoxon signed rank test. The minimum p-value is 0.0642 which is greater than the 0.05 threshold. We still set this value to 10 in the following experiments. Second, most of the top ranking methods in the U example labeling process remain highly competitive. No significant difference is observed among the top-10 baselines and our PUSh significantly outperforms 9 out of 10 of them except DTWD+R.
 
 ===== On the running time =====
+
 The corrected figures reporting running time (Fig. 11 in the original paper) are provided as "train time.png" and "test time.png". For the training time, our conclusion in the paper still holds: PUSh is able to achieve reasonable running time, with the longest average running time a little over 1000 seconds. For the testing time, our original paper got the x-axis ticks as well as the time on the MALLAT dataset wrong. Compared to the incorrect version, the corrested figure actually shows a more promissing result with all datasets taking less than 0.01s to classify a future example. Also, the MALLAT dataset is somewhat an outlier, whose running time does not follow the quasi-linear pattern displayed across other datasets. The possible explanations are two-fold: On the one hand, the shapelets used on the MALLAT datasets are all of the shortest possible length (which is 10), which is far shorter than the full time series length (1024). Second, these shapelets are selected from positions close to the beginning of some training examples, and are likely to match early positions in the testing examples. In our implementation, we have adopted an early abondoning strategy used in Ye and Keogh's original shapelet paper to accelerate calculation, and this strategy is likely to yield more gain in such cases where the matching point is among the early positions.
