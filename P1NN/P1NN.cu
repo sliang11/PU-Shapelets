@@ -829,7 +829,7 @@ int main(int argc, char **argv) {
 		memcpy(rankedInds, bestRankedInds + i * numTrain, numTrain * sizeof(int));
 		preNumP = bestPreNumPs[i];
 		getTransPreLabels(transPreLabelsAll + idxTrans * numTrain, rankedInds, numTrain, preNumP);
-		warpsAll[idxTrans] = bestFs[i] >= -1 ? bestWarps[i] * 100 : -1;
+		warpsAll[idxTrans] = bestFs[i] >= -1 ? bestWarps[i] * 100 : -1;	//needs fixing! This could lead to an error causing an inconsistency between the value stored in warpsAll and that stored in bestWarps
 		idxTrans++;
 	}
 
