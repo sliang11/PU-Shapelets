@@ -235,8 +235,8 @@ int getRdl(int *hypoSeq, int &cumNumMiss, double *nextTs, int *nextSeq, int numT
 	}
 
 	//needs log2(card) to be an integer
-	return (numTrain - numRanked + 1) * tsLen * log2(card)
-		+ cumNumMiss * (log2(card) + ceil(log2(tsLen)));
+	return round((numTrain - numRanked + 1) * tsLen * log2(card)
+		+ cumNumMiss * (log2(card) + ceil(log2(tsLen))));	//May require fixing! Can this lead to incorrect results due to loss of precision?
 }
 
 //Nurjahan Begum, Bing Hu, Thanawin Rakthanmanon, Eamonn J.Keogh: A Minimum Description Length Technique for Semi-Supervised Time Series Classification. IRI 2013: 171 - 192
@@ -829,7 +829,7 @@ int main(int argc, char **argv) {
 		memcpy(rankedInds, bestRankedInds + i * numTrain, numTrain * sizeof(int));
 		preNumP = bestPreNumPs[i];
 		getTransPreLabels(transPreLabelsAll + idxTrans * numTrain, rankedInds, numTrain, preNumP);
-		warpsAll[idxTrans] = bestFs[i] >= -1 ? round(bestWarps[i] * 100) : -1;	//May need fixing! This could lead to an error causing an inconsistency between the value stored in warpsAll and that stored in bestWarps
+		warpsAll[idxTrans] = bestFs[i] >= -1 ? round(bestWarps[i] * 100) : -1;	//May require fixing! Can this lead to incorrect results due to loss of precision?
 		idxTrans++;
 	}
 
