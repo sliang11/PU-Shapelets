@@ -3,11 +3,11 @@
 template <class T>
 int sign(T x) {
 	int ret;
-	if (x > 0)
+	if (x > 0) //this can run into issues due to loss of precision
 		ret = 1;
-	else if (x == 0)
+	else if (x == 0) //this can run into issues due to loss of precision
 		ret = 0;
-	else
+	else //this can run into issues due to loss of precision
 		ret = -1;
 	return ret;
 }
@@ -159,7 +159,7 @@ template <class T>
 void zscore(T *zx, T *x, int numElm, int zstride = 1, int stride = 1){
 	T avg = mean(x, numElm, stride);
 	T stdev = stdv(x, numElm, stride);
-	if (!stdev)
+	if (!stdev) //this can run into issues due to loss of precision
 		stdev = 1;
 	for (int i = 0; i < numElm; i++)
 		zx[i * zstride] = (x[i * stride] - avg) / stdev;
