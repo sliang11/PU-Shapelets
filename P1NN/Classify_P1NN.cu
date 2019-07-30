@@ -19,7 +19,7 @@ void getDists_DTW_D(double *distMtx_DTW_D, double *distMtx_ED, double *distMtx_D
 	for (int i = 0; i < numTest; i++) {
 		for (int j = 0; j < numTrain; j++) {
 
-			if (distMtx_ED[i * numTrain + j] == 0)
+			if (distMtx_ED[i * numTrain + j] == 0) //this can run into issues due to loss of precision
 				distMtx_DTW_D[i * numTrain + j] = 0;
 			else
 				distMtx_DTW_D[i * numTrain + j] = distMtx_DTW[i * numTrain + j] / distMtx_ED[i * numTrain + j];
