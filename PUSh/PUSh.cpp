@@ -86,14 +86,14 @@ void getDistMtx(double *distMtx, double *tss, double *sumMtx, double *sum2Mtx, d
 				s1 = sumVec_1[u + sLen] - sumVec_1[u];
 				s1_2 = sum2Vec_1[u + sLen] - sum2Vec_1[u];
 				var1 = s1_2 / sLen - (s1 / sLen) * (s1 / sLen);
-				sigma1 = var1 <= 0 ? 0 : sqrt(var1);
+				sigma1 = var1 <= 0 ? 0 : sqrt(var1); //this can run into issues due to loss of precision
 
 
 				for (v = 0; v < numShPerTs; v++) {
 					s2 = sumVec_2[v + sLen] - sumVec_2[v];
 					s2_2 = sum2Vec_2[v + sLen] - sum2Vec_2[v];
 					var2 = s2_2 / sLen - (s2 / sLen) * (s2 / sLen);
-					sigma2 = var2 <= 0 ? 0 : sqrt(var2);
+					sigma2 = var2 <= 0 ? 0 : sqrt(var2); //this can run into issues due to loss of precision
 
 					if (sigma1 == 0 && sigma2 == 0){
 						curDist = INF;
