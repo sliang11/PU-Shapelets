@@ -24,11 +24,11 @@ double getNNDist(double *ts, int tsLen, double *query, int sLen, double *zQuery,
 		win = ts + i;
 
 		std_w = stdv(win, sLen); //this can run into issues due to loss of precision
-		if (std_q == 0 && std_w == 0){
+		if (std_q == 0 && std_w == 0){ //this can run into issues due to loss of precision
 			//dist = abs(query[0] - win[0]);
 			dist = INF;
 		}
-		else if (std_q == 0 || std_w == 0){
+		else if (std_q == 0 || std_w == 0){ //this can run into issues due to loss of precision
 			//dist = 1;
 			dist = INF;
 		}
