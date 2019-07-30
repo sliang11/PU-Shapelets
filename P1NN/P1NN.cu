@@ -24,7 +24,7 @@ void getPDists_DTW_D(double *pDistMtx_DTW_D, double *pDistMtx_ED, double *pDistM
 		for (int j = i + 1; j < numTrain; j++) {
 
 			double dist;
-			if (pDistMtx_ED[i * numTrain + j] == 0){
+			if (pDistMtx_ED[i * numTrain + j] == 0){ //this can run into issues due to loss of precision
 				dist = 0;
 			}
 			else{
