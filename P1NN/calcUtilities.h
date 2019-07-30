@@ -3,11 +3,11 @@
 template <class T>
 int sign(T x) {
 	int ret;
-	if (x > 0)
+	if (x > 0) //this can run into issues due to loss of precision
 		ret = 1;
 	else if (x == 0) //this can run into issues due to loss of precision
 		ret = 0;
-	else
+	else //this can run into issues due to loss of precision
 		ret = -1;
 	return ret;
 }
