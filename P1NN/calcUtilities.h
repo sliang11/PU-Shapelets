@@ -84,12 +84,12 @@ void minWithTies(T &minVal, int *minIdxes, int &numMin, T* x, int numElm, int st
 	numMin = 1;
 	for (int i = 1; i < numElm; i++) {
 		val = x[i * stride];
-		if (val < minVal) {
+		if (val < minVal) { //this can run into issues due to loss of precision
 			minVal = val;
 			minIdxes[0] = i;
 			numMin = 1;
 		}
-		else if (val == minVal) {
+		else if (val == minVal) { //this can run into issues due to loss of precision
 			minIdxes[numMin] = i;
 			numMin++;
 		}
@@ -104,12 +104,12 @@ void maxWithTies(T &maxVal, int *maxIdxes, int &numMax, T* x, int numElm, int st
 	numMax = 1;
 	for (int i = 1; i < numElm; i++) {
 		val = x[i * stride];
-		if (val > maxVal) {
+		if (val > maxVal) { //this can run into issues due to loss of precision
 			maxVal = val;
 			maxIdxes[0] = i;
 			numMax = 1;
 		}
-		else if (val == maxVal) {
+		else if (val == maxVal) { //this can run into issues due to loss of precision
 			maxIdxes[numMax] = i;
 			numMax++;
 		}
