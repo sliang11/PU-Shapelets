@@ -15,15 +15,15 @@
 
 double getNNDist(double *ts, int tsLen, double *query, int sLen, double *zQuery, double *zWin) {
 
-	double std_q = stdv(query, sLen);
+	double std_q = stdv(query, sLen); //this can run into issues due to loss of precision
 	if(std_q > 0)
-		zscore(zQuery, query, sLen);
+		zscore(zQuery, query, sLen); //this can run into issues due to loss of precision
 
 	double *win, std_w, dist, nnDist = INF;	//the sliding window
 	for (int i = 0; i < tsLen - sLen + 1; i++) {
 		win = ts + i;
 
-		std_w = stdv(win, sLen);
+		std_w = stdv(win, sLen); //this can run into issues due to loss of precision
 		if (std_q == 0 && std_w == 0){
 			//dist = abs(query[0] - win[0]);
 			dist = INF;
@@ -33,7 +33,7 @@ double getNNDist(double *ts, int tsLen, double *query, int sLen, double *zQuery,
 			dist = INF;
 		}
 		else{
-			zscore(zWin, win, sLen);
+			zscore(zWin, win, sLen); //this can run into issues due to loss of precision
 			dist = ED2_early(zQuery, zWin, sLen, nnDist);
 		}
 
