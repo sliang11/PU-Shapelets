@@ -117,8 +117,9 @@ __global__ void getPDists_DTW(double *trainTss_in, double *testTss_in, double *p
 
 	int blockSize = blockDim.x;
 	int numThreadsPerGrid = gridDim.x * blockSize;
-	int numQueriesPerThread = ceil((double)numTest / numThreadsPerGrid);
-	int maxWarp = ceil(tsLen * bandwidth); //this can lead to an incorrect value due to loss of precision
+	int numQueriesPerThread = numTest % numThreadsPerGrid ? numTest / numThreadsPerGrid + 1 : numTest / numThreadsPerGrid;
+	//int numQueriesPerThread = ceil((double)numTest / numThreadsPerGrid);
+	int maxWarp = ceil(tsLen * bandwidth); //Caution! This can lead to an incorrect value due to loss of precision
 	double *tmp = new double[2 * (2 * maxWarp + 2)];
 	double *query, *ts;
 	int i, j, next;
