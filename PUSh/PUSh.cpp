@@ -228,7 +228,7 @@ void getShapeletPrecision(double &sp, double &spGap, double *distVec, int *order
 }
 
 //get the rankings of (assumed) shapelets by primary and secondary metrics
-void getShRanking(int *shRanking, double *primaryComplete, double *secondaryComplete, int *tmpOrder, float *randSeeds, std::vector<double> candPrimary,
+void getShRanking(int *shRanking, double *primaryComplete, double *secondaryComplete, int *tmpOrder, double *randSeeds, std::vector<double> candPrimary,
 	std::vector<double> candSecondary, std::vector<int> candShIds, std::vector<int> orderPrimary, std::vector<int> orderSecondary,
 	const int numShTotal, const int maxNumSh) {
 
@@ -447,10 +447,10 @@ int main(int argc, char **argv) {
 	std::vector<int> candShIds, orderByPrimary, orderBySecondary;
 
 	int *tmpOrder = (int *)malloc(numShTotal * sizeof(int));
-	float *randSeeds = (float *)malloc(numShTotal * sizeof(float));	//randomized seeds for quick select
+	double *randSeeds = (double *)malloc(numShTotal * sizeof(double));	//randomized seeds for quick select
 	srand((int)time(0));
 	for (int i = 0; i < numShTotal; i++)
-		randSeeds[i] = (float)rand() / RAND_MAX;
+		randSeeds[i] = (double)rand() / RAND_MAX;
 
 	//for sp calculation
 	int *preLabels_l = (int *)malloc(numTrain * sizeof(int));
@@ -555,7 +555,9 @@ int main(int argc, char **argv) {
 					maxGap = gap;
 				}
 			}
-			gapTh = max((int)(ceil((double)maxGap / 2)), 2);
+			gapTh = maxGap % 2 ? maxGap / 2 + 1 : maxGap / 2;
+			gapTh = max(gapTh, 2);
+			//gapTh = max((int)(ceil((double)maxGap / 2)), 2); //this can run into issues due to loss of precision
 
 			for (int j = 1; j < numMaxSps[i]; j++) {
 				gap = curSpStopIter[j] - curSpStopIter[j - 1] - 1;
