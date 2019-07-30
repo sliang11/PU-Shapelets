@@ -25,7 +25,7 @@ int partition(T *array, int *order, int low, int high, int seed, int stride){
 }
 
 template <class T>
-T select(T *array, int *order, int target, int low, int high, float *seeds, int stride){
+T select(T *array, int *order, int target, int low, int high, double *seeds, int stride){
 	for (int i = low; i <= high; i++)
 		order[i * stride] = i;
 
@@ -34,7 +34,13 @@ T select(T *array, int *order, int target, int low, int high, float *seeds, int 
 	else{
 		int seedId = 0;
 		while (1){
-			int seed = low + (high - low) * seeds[seedId++]; //Needs fixing! This is incorrect for large high-low values!
+			int seed = low + (high - low) * seeds[seedId++];
+			if(seed < low){
+				seed = low;
+			}
+			else if(seed > high){
+				seed = high;
+			}
 			int pivot = partition(array, order, low, high, seed, stride);
 			int k = pivot - low + 1;
 			if (target == k){
