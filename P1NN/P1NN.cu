@@ -291,7 +291,7 @@ std::vector<std::tuple<int, int, int, int>> getIntervals(double *minNNDists, int
 			instTrend = 0;
 		else {
 			diff = minNNDist - prevMinNNDist;
-			instTrend = sign(diff);
+			instTrend = sign(diff);	//this can run into issues due to loss of precision
 			if (!instTrend) {
 				instTrend = curTrend;
 			}
