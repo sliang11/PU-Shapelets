@@ -95,10 +95,10 @@ void getDistMtx(double *distMtx, double *tss, double *sumMtx, double *sum2Mtx, d
 					var2 = s2_2 / sLen - (s2 / sLen) * (s2 / sLen);
 					sigma2 = var2 <= 0 ? 0 : sqrt(var2); //this can run into issues due to loss of precision
 
-					if (sigma1 == 0 && sigma2 == 0){
+					if (sigma1 == 0 && sigma2 == 0){ //this can run into issues due to loss of precision
 						curDist = INF;
 					}
-					else if (sigma1 == 0 || sigma2 == 0){
+					else if (sigma1 == 0 || sigma2 == 0){ //this can run into issues due to loss of precision
 						curDist = INF;
 					}
 					else{
