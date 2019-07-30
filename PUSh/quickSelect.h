@@ -34,7 +34,7 @@ T select(T *array, int *order, int target, int low, int high, float *seeds, int 
 	else{
 		int seedId = 0;
 		while (1){
-			int seed = low + (high - low) * seeds[seedId++];
+			int seed = low + (high - low) * seeds[seedId++]; //Needs fixing! This is incorrect for large high-low values!
 			int pivot = partition(array, order, low, high, seed, stride);
 			int k = pivot - low + 1;
 			if (target == k){
