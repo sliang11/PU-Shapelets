@@ -204,7 +204,7 @@ int sc_RW(double *minNNDists, int minNumP, int maxNumP, int numTrain, int numPLa
 
 		diff = abs(minNNDists[i] - minNNDists[i - 1]);
 		std = sum2 / (i + 1) - sum * sum / ((i + 1) * (i + 1));
-		std = std > 0 ? sqrt(std) : 1;
+		std = std > 0 ? sqrt(std) : 1;	//this can run into issues due to loss of precision
 		scc = diff / std * (double)(initNumU - i) / initNumU;
 
 		if (scc > maxScc) {
