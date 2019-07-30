@@ -15,7 +15,7 @@ __device__ void getMuSigma(double &mu, double &sigma, double *ts, const int tsLe
 		s2 += term * term;
 	}
 	mu = s / tsLen;
-	sigma = s2 / tsLen > mu * mu ? sqrt(s2 / tsLen - mu * mu) : 1;
+	sigma = s2 / tsLen > mu * mu ? sqrt(s2 / tsLen - mu * mu) : 1; //this can run into issues due to loss of precision
 }
 
 __device__ void getNormalizedTerm(double &term, double mu, double sigma){
