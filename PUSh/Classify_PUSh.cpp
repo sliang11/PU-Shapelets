@@ -16,7 +16,7 @@
 double getNNDist(double *ts, int tsLen, double *query, int sLen, double *zQuery, double *zWin) {
 
 	double std_q = stdv(query, sLen); //this can run into issues due to loss of precision
-	if(std_q > 0)
+	if(std_q > 0) //this can run into issues due to loss of precision
 		zscore(zQuery, query, sLen); //this can run into issues due to loss of precision
 
 	double *win, std_w, dist, nnDist = INF;	//the sliding window
