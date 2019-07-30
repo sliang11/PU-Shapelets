@@ -550,7 +550,9 @@ int main(int argc, char **argv) {
 	long long pDistsBytes = numTrain * numTrain * sizeof(double);
 	cudaMalloc(&pDists_out, pDistsBytes);
 	int blockSize = numTrain < maxThreadsPerBlock ? numTrain : maxThreadsPerBlock;
-	int gridSize = ceil((double)numTrain / blockSize) < maxBlocksPerGrid ? ceil((double)numTrain / blockSize) : maxBlocksPerGrid;
+	int gridSize = numTrain % blockSize ? numTrain / blockSize + 1 : numTrain / blockSize;
+	gridSize = gridSize < maxBlocksPerGrid ? gridSize : maxBlocksPerGrid;
+	//int gridSize = ceil((double)numTrain / blockSize) < maxBlocksPerGrid ? ceil((double)numTrain / blockSize) : maxBlocksPerGrid;
 	getPDists_DTW << <gridSize, blockSize >> > (trainTss_in, trainTss_in, pDists_out, numTrain, numTrain, tsLen, 0);	//ED is DTW with zero warp.
 	cudaError_t cudaerr = cudaThreadSynchronize();
 	if (cudaerr != cudaSuccess)
