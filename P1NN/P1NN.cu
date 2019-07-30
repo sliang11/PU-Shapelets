@@ -223,7 +223,7 @@ void discretize(int *seq, double *ts, int tsLen, int card) {
 		maxVal++;
 
 	for (int i = 0; i < tsLen; i++) {
-		seq[i] = round((ts[i] - minVal) / (maxVal - minVal) * (card - 1)) + 1;
+		seq[i] = round((ts[i] - minVal) / (maxVal - minVal) * (card - 1)) + 1;	//this can lead to incorrect values due to loss of precision
 	}
 }
 
@@ -235,8 +235,8 @@ int getRdl(int *hypoSeq, int &cumNumMiss, double *nextTs, int *nextSeq, int numT
 	}
 
 	//needs log2(card) to be an integer
-	return round((numTrain - numRanked + 1) * tsLen * log2(card)
-		+ cumNumMiss * (log2(card) + ceil(log2(tsLen))));	//May require fixing! Can this lead to incorrect results due to loss of precision?
+	return (numTrain - numRanked + 1) * tsLen * log2(card)
+		+ cumNumMiss * (log2(card) + ceil(log2(tsLen)));	//May require fixing! Can this lead to incorrect results due to loss of precision?
 }
 
 //Nurjahan Begum, Bing Hu, Thanawin Rakthanmanon, Eamonn J.Keogh: A Minimum Description Length Technique for Semi-Supervised Time Series Classification. IRI 2013: 171 - 192
