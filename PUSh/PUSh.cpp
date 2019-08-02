@@ -519,13 +519,13 @@ int main(int argc, char **argv) {
 	for (int i = 0; i < maxNumSh; i++) {
 		curAvgSpByIter = avgSpByIter + i * maxNumIters;
 		curSpStopIter = spStopIter + i * maxItersConsidered;
-		maxWithTies(maxSps[i], curSpStopIter, numMaxSps[i], curAvgSpByIter + minIter, maxItersConsidered);
+		maxWithTies(maxSps[i], curSpStopIter, numMaxSps[i], curAvgSpByIter + minIter, maxItersConsidered); //this can run into issues due to loss of precision
 		for (int j = 0; j < numMaxSps[i]; j++) {
 			curSpStopIter[j] += minIter;
 		}
 
 		if (minIter > 0)
-			maxWithTies(maxSpBelow, curSpStopIterBelow, numMaxSpBelow, curAvgSpByIter, minIter);	//first minNumIter-1=minIter iterations
+			maxWithTies(maxSpBelow, curSpStopIterBelow, numMaxSpBelow, curAvgSpByIter, minIter);	//first minNumIter-1=minIter iterations; this can run into issues due to loss of precision
 		else
 			maxSpBelow = -1;
 
