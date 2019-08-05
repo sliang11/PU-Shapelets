@@ -287,8 +287,8 @@ std::vector<std::tuple<int, int, int, int>> getIntervals(double *minNNDists, int
 	for (int i = 1; i < numTrain - numPLabeled; i++) {
 
 		minNNDist = minNNDists[i];
-		if (minNNDist > lb && minNNDist < ub)
-			instTrend = 0;
+		if (minNNDist > lb && minNNDist < ub) //this can run into issues due to loss of precision
+			instTrend = 0; 
 		else {
 			diff = minNNDist - prevMinNNDist;
 			instTrend = sign(diff);	//this can run into issues due to loss of precision
@@ -347,7 +347,7 @@ std::vector<std::tuple<int, int, int, int>> getIntervals(double *minNNDists, int
 				else{
 					lb = INF; ub = -INF;
 				}
-				if (minNNDist > lb && minNNDist < ub) {
+				if (minNNDist > lb && minNNDist < ub) { //this can run into issues due to loss of precision
 					curTrend = 0;
 					ds = i - 1;
 
