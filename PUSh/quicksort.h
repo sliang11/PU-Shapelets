@@ -14,7 +14,7 @@ int partition(T *array, int *order, int low, int high){
 	T x = array[order[high]];
 	int i = low - 1, j;
 	for (j = low; j < high; j++){
-		if (array[order[j]] <= x){
+		if (array[order[j]] <= x){	//this can run into issues due to loss of precision
 			i++;
 			swapElm(order[i], order[j]);
 		}
