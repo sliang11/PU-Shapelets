@@ -258,8 +258,8 @@ void getShRanking(int *shRanking, double *primaryComplete, double *secondaryComp
 		candSecondary.clear(); candSecondary.push_back(secondaryComplete[candShIds[orderPrimary[0]]]);
 		for (int i = 1; i < numPrimary; i++) {
 			primary = candPrimary[orderPrimary[i]];
-			if (curPrimary != primary || (curPrimary == primary && i == numPrimary - 1)) {
-				if (curPrimary == primary)
+			if (curPrimary != primary || (curPrimary == primary && i == numPrimary - 1)) { //this can run into issues due to loss of precision
+				if (curPrimary == primary) //this can run into issues due to loss of precision
 					candSecondary.push_back(secondaryComplete[candShIds[orderPrimary[i]]]);
 				else
 					curPrimary = primary;
