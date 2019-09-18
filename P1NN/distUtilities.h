@@ -22,6 +22,8 @@ __device__ void getNormalizedTerm(double &term, double mu, double sigma){
 	term = (term - mu) / sigma;
 }
 
+
+//WARNING: Do NOT sse this to calculate distances between different-length time series! This can end up with an incorrect result!
 //Reference: Doruk Sart, Abdullah Mueen, Walid A. Najjar, Eamonn J. Keogh, Vit Niennattrakul:
 //Accelerating Dynamic Time Warping Subsequence Search with GPUs and FPGAs. ICDM 2010: 1001-1006.
 __device__ void dtw(double &dist, double *ts, double *query, double *tmp,
