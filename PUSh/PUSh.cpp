@@ -669,8 +669,6 @@ int main(int argc, char **argv) {
 	fout << "Fscore: " << fscore << std::endl;
 	fout << "Running time (Total / Distance computation): " << time_total << " / " << time_dist;
 	fout.close();
-	//fout << precision << std::endl << recall << std::endl << fscore << std::endl << time_total << std::endl << time_dist << std::endl;
-	fout.close();
 
 	fName = outputPath + "\\" + datasetName + "_PUSh_trainPreLabels_" + s_seedId + "_" + s_maxNumSh + "_" + s_minNumIters + "_" + s_maxNumIters + ".txt";
 	fout.open(fName);
